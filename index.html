@@ -244,67 +244,35 @@ footer strong{color:var(--text)}
 </footer>
 <script>
 /* ---------- 샘플 공고 (시연용) ---------- */
-const SAMPLE_JOBS = [
-{id:1, univ:"서강대학교", title:"계약직원 채용 공고 (행정)", cat:"행정", contract:"1년",
- pay:"연 2,906만원 이상", location:"서울 마포구", headcount:"○명", deadline:"2026-11-02",
- tags:["신입가능"], plan:"하이라이트",
- desc:"교무·학사 행정 지원 업무.\n문서작성, 전산입력, 민원 응대. 대학 행정 유경험자 우대.",
- contact:"교무처 02-000-0001", source:"#"},
-{id:2, univ:"건국대학교", title:"공과대학 행정지원직(계약직) 채용", cat:"행정", contract:"1년",
- pay:"월 237만원 수준", location:"서울 광진구", headcount:"1명", deadline:"2026-10-24",
- tags:["신입가능"], plan:"기본",
- desc:"공과대학 행정실 행정 운영 지원 및 일반 행정 업무.\n주 5일 전일제. 4년제 대졸 이상.",
- contact:"공과대학 행정실 02-450-3443", source:"#"},
-{id:3, univ:"명지대학교", title:"국제교류처 계약직원 채용 (중국어 가능자)", cat:"행정", contract:"1년",
- pay:"연 2,800만원 이상", location:"경기 용인시", headcount:"1명", deadline:"2026-11-08",
- tags:[], plan:"기본",
- desc:"국제교류처 외국인 유학생 지원 및 행정 업무.\n중국어 가능자 필수. 용인캠퍼스 근무.",
- contact:"국제교류처 031-000-0003", source:"#"},
-{id:4, univ:"경희사이버대학교", title:"기간제 직원 채용", cat:"행정", contract:"1년",
- pay:"연 2,600~3,300만원", location:"서울 동대문구", headcount:"○명", deadline:"2026-10-29",
- tags:["신입가능"], plan:"기본",
- desc:"온라인 대학 학사·학생 관리 업무.\n문서관리, 전산입력, 학생 상담 지원.",
- contact:"인사팀 02-000-0004", source:"#"},
-{id:5, univ:"부산대학교", title:"대학일자리플러스센터 취업 컨설턴트", cat:"취업지원", contract:"1년",
- pay:"협의", location:"부산 금정구", headcount:"1명", deadline:"2026-11-15",
- tags:[], plan:"기본",
- desc:"재학생 취업 상담 및 프로그램 운영.\n직업상담사 자격증 소지자 또는 관련 경력 1년 이상.",
- contact:"일자리플러스센터 051-000-0005", source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mode=list"},
-{id:6, univ:"칼빈대학교", title:"교수학습센터 계약직 연구원", cat:"연구", contract:"1년",
- pay:"협의", location:"경기 용인시", headcount:"1명", deadline:"2026-11-01",
- tags:[], plan:"기본",
- desc:"교수학습 지원 프로그램 기획·운영 및 교육 데이터 분석.\n교육학·관련 전공 석사 이상 우대.",
- contact:"교수학습센터 031-000-0006", source:"#"},
-{id:7, univ:"중앙대학교", title:"중앙도서관 사서 보조 (계약직)", cat:"사서", contract:"1년 미만",
- pay:"월 220만원 수준", location:"서울 동작구", headcount:"2명", deadline:"2026-10-26",
- tags:["신입가능"], plan:"기본",
- desc:"도서관 자료실 운영 보조, 대출·반납 지원, 서가 정리.\n사서 자격증 소지자 우대 (필수 아님).",
- contact:"중앙도서관 02-000-0007", source:"#"},
-{id:8, univ:"한양대학교", title:"전산원 계약직원 (시스템 운영)", cat:"전산", contract:"2년",
- pay:"연 3,000만원 이상", location:"서울 성동구", headcount:"1명", deadline:"2026-11-20",
- tags:[], plan:"하이라이트",
- desc:"학사정보시스템 운영 및 장애 대응.\n관련 경력 1년 이상 또는 정보처리기사 우대.",
- contact:"전산원 02-000-0008", source:"#"},
-{id:9, univ:"고려대학교", title:"입학처 입시 업무 보조 (계약직)", cat:"입시", contract:"1년 미만",
- pay:"월 230만원 수준", location:"서울 성북구", headcount:"3명", deadline:"2026-10-22",
- tags:["신입가능"], plan:"기본",
- desc:"입시 기간 서류 접수·정리 및 수험생 안내.\n입시 시즌 집중 근무 (11월~1월).",
- contact:"입학처 02-000-0009", source:"#"},
-{id:10, univ:"연세대학교", title:"산학협력단 연구비 정산 담당 (계약직)", cat:"연구", contract:"1년",
- pay:"연 2,900만원 이상", location:"서울 서대문구", headcount:"1명", deadline:"2026-11-12",
- tags:[], plan:"기본",
- desc:"국가연구과제 연구비 집행·정산 및 행정 지원.\n회계·행정 경력자 우대.",
- contact:"산학협력단 02-000-0010", source:"#"},
-{id:11, univ:"경북대학교", title:"학생처 장학 행정 계약직원", cat:"행정", contract:"1년",
- pay:"연 2,700만원 이상", location:"대구 북구", headcount:"1명", deadline:"2026-11-05",
- tags:["신입가능"], plan:"기본",
- desc:"장학금 신청 접수·심사 보조 및 학생 상담.\n친절하고 꼼꼼한 분 환영.",
- contact:"학생처 053-000-0011", source:"#"},
-{id:12, univ:"성균관대학교", title:"시설관리팀 계약직원", cat:"시설관리", contract:"2년",
- pay:"연 2,800만원 이상", location:"서울 종로구", headcount:"2명", deadline:"2026-11-18",
- tags:[], plan:"프리미엄",
- desc:"캠퍼스 시설물 유지보수 관리 및 외주 업체 협업.\n관련 자격증 소지자 우대.",
- contact:"시설관리팀 02-000-0012", source:"https://www.skku.edu/skku/campus/skk_comm/notice01.do"}
+const BASE_JOBS = [
+ {id:"pnu-1511383",univ:"부산대학교",title:"[앵커] 지역성장 인재양성체계(앵커) 사업 추진을 위한 계약직원 공개경쟁 채용 ...",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-10-02",desc:"부산대학교 부산앵커사업총괄실 등록 공고입니다. 등록일 2026-10-02.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"부산앵커사업총괄실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511383"},
+ {id:"pnu-1511381",univ:"부산대학교",title:"부산대학교 산학협력단 계약직원 채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-10-02",desc:"부산대학교 인사실 등록 공고입니다. 등록일 2026-10-02.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"인사실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511381"},
+ {id:"pnu-1511371",univ:"부산대학교",title:"부산대학교 경제학과 4단계 BK21 교육연구단 산학협력전담직원 채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-10-01",desc:"부산대학교 지역선도 균형발전을 위한 혁신인재 양성 교육연구단 등록 공고입니다. 등록일 2026-10-01.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"지역선도 균형발전을 위한 혁신인재 양성 교육연구단",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511371"},
+ {id:"pnu-1511353",univ:"부산대학교",title:"부산대학교 대학일자리플러스센터 자체직원(취업 컨설턴트, 사무원) 채용 공고",cat:"취업지원",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-10-01",desc:"부산대학교 학생성공개발원행정실 등록 공고입니다. 등록일 2026-10-01.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"학생성공개발원행정실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511353"},
+ {id:"pnu-1511314",univ:"부산대학교",title:"부산대학교 전략산업AX융합연구원 계약직원 공개채용시험 공고",cat:"연구",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-30",desc:"부산대학교 연구진흥과 등록 공고입니다. 등록일 2026-09-30.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"연구진흥과",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511314"},
+ {id:"pnu-1511292",univ:"부산대학교",title:"부산대학교 녹색국토물관리연구소 연구교수 채용 공고",cat:"연구",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-29",desc:"부산대학교 녹색국토물관리연구소 등록 공고입니다. 등록일 2026-09-29.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"녹색국토물관리연구소",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511292"},
+ {id:"pnu-1511289",univ:"부산대학교",title:"부산대학교 첨단냉동공조에너지센터 ILAP 연구실 연구교수 및 전임연구원 공개채용...",cat:"연구",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-29",desc:"부산대학교 첨단냉동공조에너지센터 등록 공고입니다. 등록일 2026-09-29.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"첨단냉동공조에너지센터",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511289"},
+ {id:"pnu-1511270",univ:"부산대학교",title:"부산대학교 G-램프(LAMP)사업단(기초과학연구원) 계약직원(테크니션) 공개채용...",cat:"연구",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-28",desc:"부산대학교 G-램프(LAMP)사업단(기초과학연구원) 등록 공고입니다. 등록일 2026-09-28.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"G-램프(LAMP)사업단(기초과학연구원)",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511270"},
+ {id:"pnu-1511264",univ:"부산대학교",title:"부산대학교 AI거점대학사업/장영실AI연구원/Digital-X AIoT 연구센터 ...",cat:"연구",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-28",desc:"부산대학교 Digital-XAIoT연구센터 등록 공고입니다. 등록일 2026-09-28.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"Digital-XAIoT연구센터",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511264"},
+ {id:"pnu-1511263",univ:"부산대학교",title:"부산대학교 기획처 대학혁신지원과 계약직원(전임연구원, 사무원) 공개경쟁 채용시험...",cat:"연구",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-28",desc:"부산대학교 대학혁신지원과 등록 공고입니다. 등록일 2026-09-28.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"대학혁신지원과",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511263"},
+ {id:"pnu-1511260",univ:"부산대학교",title:"부산대학교 블록체인 플랫폼 연구센터 사무원 채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-28",desc:"부산대학교 블록체인플랫폼연구센터 등록 공고입니다. 등록일 2026-09-28.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"블록체인플랫폼연구센터",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511260"},
+ {id:"pnu-1511247",univ:"부산대학교",title:"[교육혁신실] 부산대학교 교육혁신본부 교육혁신실 자체직원(전임연구원) 공개채용 ...",cat:"연구",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-23",desc:"부산대학교 교육혁신실 등록 공고입니다. 등록일 2026-09-23.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"교육혁신실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511247"},
+ {id:"pnu-1511246",univ:"부산대학교",title:"부산대학교 전자공학전공 조교 채용 재공고( 담당업무 및 지원자격 변경 )",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-23",desc:"부산대학교 전기전자공학부 등록 공고입니다. 등록일 2026-09-23.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"전기전자공학부",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511246"},
+ {id:"pnu-1511231",univ:"부산대학교",title:"부산대학교 학생성공개발원 현장실습지원센터 사무원(육아휴직대체) 공개채용 재공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-22",desc:"부산대학교 학생성공개발원행정실 등록 공고입니다. 등록일 2026-09-22.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"학생성공개발원행정실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511231"},
+ {id:"pnu-1511230",univ:"부산대학교",title:"[과학영재교육원] 2027학년도 입시전형 보조요원 모집 공고",cat:"입시",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-22",desc:"부산대학교 과학영재교육원 등록 공고입니다. 등록일 2026-09-22.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"과학영재교육원",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511230"},
+ {id:"pnu-1511189",univ:"부산대학교",title:"부산대학교 국가공무원 전입 및 지방공무원 경력경쟁채용 공고(행정9급, 공업9급,...",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-21",desc:"부산대학교 총무과 등록 공고입니다. 등록일 2026-09-21.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"총무과",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511189"},
+ {id:"pnu-1511158",univ:"부산대학교",title:"동남권AI혁신연구센터 행정전담인력 채용",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-18",desc:"부산대학교 AI융합교육원 등록 공고입니다. 등록일 2026-09-18.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"AI융합교육원",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511158"},
+ {id:"pnu-1511157",univ:"부산대학교",title:"부산대학교 산학협력단(국립대학육성사업) 사업직원 채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-18",desc:"부산대학교 인사실 등록 공고입니다. 등록일 2026-09-18.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"인사실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511157"},
+ {id:"pnu-1511156",univ:"부산대학교",title:"부산대학교 산학협력단(창업중심대학) 사업직원 채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-09-18",desc:"부산대학교 인사실 등록 공고입니다. 등록일 2026-09-18.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"인사실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1511156"},
+ {id:"pnu-1510704",univ:"부산대학교",title:"부산대학교 산학협력단 대체직원 채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-08-28",desc:"부산대학교 인사실 등록 공고입니다. 등록일 2026-08-28.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"인사실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1510704"},
+ {id:"pnu-1510703",univ:"부산대학교",title:"부산대학교 산학협력단(양산캠퍼스 산학협력본부) 대체직원 채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-08-28",desc:"부산대학교 인사실 등록 공고입니다. 등록일 2026-08-28.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"인사실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1510703"},
+ {id:"pnu-1510586",univ:"부산대학교",title:"부산대학교 산학협력단(국립대학육성사업) 사업직원 채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-08-21",desc:"부산대학교 인사실 등록 공고입니다. 등록일 2026-08-21.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"인사실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1510586"},
+ {id:"pnu-1510539",univ:"부산대학교",title:"[도시공학과] 사무보조원 채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-08-18",desc:"부산대학교 도시공학과 등록 공고입니다. 등록일 2026-08-18.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"도시공학과",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1510539"},
+ {id:"pnu-1510047",univ:"부산대학교",title:"[양산캠퍼스] 의생명과학도서관 업무보조인력 채용공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-07-21",desc:"부산대학교 도서관 정보운영과 등록 공고입니다. 등록일 2026-07-21.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"도서관 정보운영과",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1510047"},
+ {id:"pnu-1510000",univ:"부산대학교",title:"부산대학교 학부대학 계약직원(사무원) 공개채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-07-20",desc:"부산대학교 학부대학행정실 등록 공고입니다. 등록일 2026-07-20.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"학부대학행정실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1510000"},
+ {id:"pnu-1509715",univ:"부산대학교",title:"부산대학교 국가공무원 전입 및 지방공무원 경력경쟁채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-07-01",desc:"부산대학교 총무과 등록 공고입니다. 등록일 2026-07-01.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"총무과",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1509715"},
+ {id:"pnu-1509646",univ:"부산대학교",title:"부산대학교 홍보실 국립대학육성사업 계약직원(해외홍보) 공개채용 공고",cat:"행정",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-06-29",desc:"부산대학교 홍보실 등록 공고입니다. 등록일 2026-06-29.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"홍보실",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1509646"},
+ {id:"pnu-1509589",univ:"부산대학교",title:"부산대학교 첨단냉동공조에너지센터 ILAP 연구실 연구교수 및 전임연구원 공개채용...",cat:"연구",contract:"계약직",pay:"원문 확인",location:"부산",headcount:"-",deadline:"원문 확인",posted:"2026-06-24",desc:"부산대학교 첨단냉동공조에너지센터 등록 공고입니다. 등록일 2026-06-24.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.",contact:"첨단냉동공조에너지센터",source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mgr_seq=10&mode=view&board_seq=1509589"}
 ];
 
 /* ---------- 상태 ---------- */
@@ -314,7 +282,7 @@ let selectedPlan = {name:'기본', price:0};
 
 function allJobs(){
   const customs = customJobs.map((j,i)=>({...j, id:'c'+i, custom:true}));
-  return [...customs, ...SAMPLE_JOBS];
+  return [...customs, ...BASE_JOBS];
 }
 function getJob(id){ return allJobs().find(j=>String(j.id)===String(id)); }
 function esc(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -369,8 +337,8 @@ function renderJobs(jobs){
     const bm = bookmarks.includes(String(j.id)) ? 'on' : '';
     const tags = (j.tags||[]).map(t=>'<span class="badge">'+t+'</span>').join('');
     const d = daysLeft(j.deadline);
-    const dlCls = d<=7 ? 'deadline urgent' : 'deadline';
-    const dlTxt = d<0 ? '마감됨' : (d===0 ? '오늘 마감' : 'D-'+d);
+    const dlCls = (!isNaN(d) && d<=7) ? 'deadline urgent' : 'deadline';
+    const dlTxt = isNaN(d) ? '마감일 원문 확인' : (d<0 ? '마감됨' : (d===0 ? '오늘 마감' : 'D-'+d));
     const prem = j.plan==='프리미엄' ? ' premium' : '';
     const srcLink = (j.source && j.source!=='#')
       ? `<a href="${esc(j.source)}" target="_blank" rel="noopener" style="font-size:12px;color:var(--primary);font-weight:700">원문보기 →</a>` : '';
@@ -385,9 +353,9 @@ function renderJobs(jobs){
         <span class="badge">계약 ${esc(j.contract)}</span>${tags}
       </div>
       <div class="job-pay">${esc(j.pay)}</div>
-      <div class="job-sub">${esc(j.location)} · ${esc(j.headcount)} 모집</div>
+      <div class="job-sub">${esc(j.location)}${j.headcount&&j.headcount!=='-'?' · '+esc(j.headcount)+' 모집':''}</div>
       <div class="job-foot">
-        <span class="${dlCls}">${dlTxt} · ~ ${esc(j.deadline)}</span>
+        <span class="${dlCls}">${dlTxt}${isNaN(d)?'':' · ~ '+esc(j.deadline)}</span>
         <span style="display:flex;gap:8px;align-items:center">${srcLink}<button class="detail-btn" onclick="openModal('${j.id}')">상세보기</button></span>
       </div>
     </div>`;
@@ -419,7 +387,7 @@ function openModal(id){
     ? `<div class="modal-sec"><h3>원문 공고</h3><p><a href="${esc(j.source)}" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">대학 홈페이지에서 확인하기 →</a></p></div>` : '';
   const applyBtn = (j.source && j.source!=='#')
     ? `<a class="apply-btn" href="${esc(j.source)}" target="_blank" rel="noopener">대학 홈페이지에서 지원하기</a>`
-    : `<button class="apply-btn" onclick="alert('시연용 샘플 공고예요.\\n실제 공고가 등록되면 대학 홈페이지로 연결돼요.')">지원하기</button>`;
+    : `<button class="apply-btn" onclick="alert('시연용 샘플 공고예요.\n실제 공고가 등록되면 대학 홈페이지로 연결돼요.')">지원하기</button>`;
   document.getElementById('modal-body').innerHTML = `
     <div class="job-company">${esc(j.univ)}</div>
     <h2>${esc(j.title)}</h2>
@@ -428,7 +396,7 @@ function openModal(id){
       <span class="badge">계약 ${esc(j.contract)}</span>${tags}
     </div>
     <div class="modal-sec"><h3>급여</h3><p><strong>${esc(j.pay)}</strong></p></div>
-    <div class="modal-sec"><h3>근무 조건</h3><p>${esc(j.location)} · ${esc(j.headcount)} 모집 · 마감 ${esc(j.deadline)}</p></div>
+    <div class="modal-sec"><h3>근무 조건</h3><p>${esc(j.location)}${j.headcount&&j.headcount!=='-'?' · '+esc(j.headcount)+' 모집':''} · 마감 ${esc(j.deadline)}${j.posted?' · 등록 '+esc(j.posted):''}</p></div>
     <div class="modal-sec"><h3>상세 내용</h3><p style="white-space:pre-line">${esc(j.desc)}</p></div>
     <div class="modal-sec"><h3>문의</h3><p>${esc(j.contact)}</p></div>
     ${srcRow}
