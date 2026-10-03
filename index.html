@@ -110,6 +110,7 @@ footer strong{color:var(--text)}
 </script>
 </head>
 <body>
+<div id="visit-topbar" style="background:var(--primary);color:#fff;text-align:center;font-size:12px;padding:6px 12px;letter-spacing:.2px">누적 방문자 <b id="visit-count-top">–</b>명</div>
 <header>
   <div class="header-inner">
     <a href="#" class="logo" onclick="showView('list');return false;">유니잡<small>대학교 계약직 통합 채용</small></a>
@@ -256,8 +257,15 @@ footer strong{color:var(--text)}
 <script>
 fetch('https://abacus.jasoncameron.dev/hit/univjobs-site/visits')
   .then(r=>r.json())
-  .then(d=>{document.getElementById('visit-count').textContent=Number(d.value).toLocaleString();})
-  .catch(()=>{document.getElementById('visit-wrap').style.display='none';});
+  .then(d=>{
+    var v=Number(d.value).toLocaleString();
+    document.getElementById('visit-count').textContent=v;
+    document.getElementById('visit-count-top').textContent=v;
+  })
+  .catch(()=>{
+    document.getElementById('visit-wrap').style.display='none';
+    document.getElementById('visit-topbar').style.display='none';
+  });
 </script>
 <script>
 /* ---------- 샘플 공고 (시연용) ---------- */
