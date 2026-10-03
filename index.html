@@ -68,6 +68,7 @@ nav{display:flex;gap:8px}
 .modal-sec ul{padding-left:18px}
 .apply-btn{width:100%;margin-top:22px;background:var(--primary);color:#fff;border:none;border-radius:14px;padding:15px;font-size:16px;font-weight:800}
 .apply-btn:hover{background:var(--primary-dark)}
+a.apply-btn{display:block;text-align:center}
 #post-view{display:none}
 .post-wrap{max-width:720px;margin:0 auto;padding:36px 20px 70px}
 .post-wrap h1{font-size:26px;letter-spacing:-.8px;text-align:center;margin-bottom:6px}
@@ -268,7 +269,7 @@ const SAMPLE_JOBS = [
  pay:"협의", location:"부산 금정구", headcount:"1명", deadline:"2026-11-15",
  tags:[], plan:"기본",
  desc:"재학생 취업 상담 및 프로그램 운영.\n직업상담사 자격증 소지자 또는 관련 경력 1년 이상.",
- contact:"일자리플러스센터 051-000-0005", source:"#"},
+ contact:"일자리플러스센터 051-000-0005", source:"https://www.pusan.ac.kr/kor/CMS/Board/Board.do?mCode=MN103&mode=list"},
 {id:6, univ:"칼빈대학교", title:"교수학습센터 계약직 연구원", cat:"연구", contract:"1년",
  pay:"협의", location:"경기 용인시", headcount:"1명", deadline:"2026-11-01",
  tags:[], plan:"기본",
@@ -303,7 +304,7 @@ const SAMPLE_JOBS = [
  pay:"연 2,800만원 이상", location:"서울 종로구", headcount:"2명", deadline:"2026-11-18",
  tags:[], plan:"프리미엄",
  desc:"캠퍼스 시설물 유지보수 관리 및 외주 업체 협업.\n관련 자격증 소지자 우대.",
- contact:"시설관리팀 02-000-0012", source:"#"}
+ contact:"시설관리팀 02-000-0012", source:"https://www.skku.edu/skku/campus/skk_comm/notice01.do"}
 ];
 
 /* ---------- 상태 ---------- */
@@ -416,6 +417,9 @@ function openModal(id){
   const tags = (j.tags||[]).map(t=>'<span class="badge">'+t+'</span>').join('');
   const srcRow = (j.source && j.source!=='#')
     ? `<div class="modal-sec"><h3>원문 공고</h3><p><a href="${esc(j.source)}" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">대학 홈페이지에서 확인하기 →</a></p></div>` : '';
+  const applyBtn = (j.source && j.source!=='#')
+    ? `<a class="apply-btn" href="${esc(j.source)}" target="_blank" rel="noopener">대학 홈페이지에서 지원하기</a>`
+    : `<button class="apply-btn" onclick="alert('시연용 샘플 공고예요.\\n실제 공고가 등록되면 대학 홈페이지로 연결돼요.')">지원하기</button>`;
   document.getElementById('modal-body').innerHTML = `
     <div class="job-company">${esc(j.univ)}</div>
     <h2>${esc(j.title)}</h2>
@@ -428,7 +432,7 @@ function openModal(id){
     <div class="modal-sec"><h3>상세 내용</h3><p style="white-space:pre-line">${esc(j.desc)}</p></div>
     <div class="modal-sec"><h3>문의</h3><p>${esc(j.contact)}</p></div>
     ${srcRow}
-    <button class="apply-btn" onclick="alert('프로토타입이라 실제 지원은 안 돼요.\\n문의: ${esc(j.contact)}')">지원하기</button>`;
+    ${applyBtn}`;
   document.getElementById('modal-back').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
