@@ -750,10 +750,13 @@ function renderJobs(jobs){
     const prem = j.plan==='프리미엄' ? ' premium' : '';
     const srcLink = (j.source && j.source!=='#')
       ? `<a href="${esc(j.source)}" target="_blank" rel="noopener" style="font-size:12px;color:var(--primary);font-weight:700">원문보기 →</a>` : '';
-    // 8개마다 제휴 상품 카드 삽입
+    // 8개마다 제휴 상품 카드 삽입 (필터링된 적은 목록에도 최소 1개 보장)
     let affHtml = '';
-    if((idx+1) % 8 === 0){
-      const affIdx = Math.floor((idx+1)/8 - 1) % AFFILIATE_PRODUCTS.length;
+    const affPos = (idx+1) % 8 === 0;
+    const needOne = jobs.length < 8 && idx === Math.min(2, jobs.length - 1);
+    if(affPos || needOne){
+      const affIdx = affPos ? (Math.floor((idx+1)/8 - 1) % AFFILIATE_PRODUCTS.length)
+                            : (jobs.length % AFFILIATE_PRODUCTS.length);
       affHtml = affCard(AFFILIATE_PRODUCTS[affIdx]);
     }
     return `<div class="job-card${prem}">
