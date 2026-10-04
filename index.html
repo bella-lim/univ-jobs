@@ -649,12 +649,12 @@ function esc(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;')
 /* 쿠팡파트너스 제휴 상품 (생필품 위주)
    ※ link를 본인의 쿠팡파트너스 링크로 교체하세요 */
 const AFFILIATE_PRODUCTS = [
-  {name:'크리넥스 3겹 데코&소프트 화장지 30롤', promo:'자주 사는 생필품 1위! 지금 특가', price:28900, orig:35900, link:'#', history:[35900,34900,33900,32900,31900,30900,29900,28900]},
-  {name:'다우니 세탁세제 3L (엑스퍼트)', promo:'대용량이라 오래 써요', price:18900, orig:24900, link:'#', history:[24900,23900,22900,21900,20900,19900,19400,18900]},
-  {name:'탐사 물티슈 100매 x 10팩', promo:'육아맘 필수템, 쟁여두기 좋아요', price:15900, orig:21900, link:'#', history:[21900,20900,19900,18900,17900,16900,16400,15900]},
-  {name:'TS 뉴프리미엄 샴푸 500ml', promo:'두피 걱정 끝! 실구매자 평점 높음', price:21900, orig:29000, link:'#', history:[29000,27900,26900,25900,24900,23900,22900,21900]},
-  {name:'퐁퐁 주방세제 1.2L x 2개', promo:'주방 필수! 기름때 싹', price:12900, orig:16900, link:'#', history:[16900,16400,15900,15400,14900,14400,13900,12900]},
-  {name:'햇반 백미 210g x 24개', promo:'바쁠 때 한 끼 해결!', price:27900, orig:33800, link:'#', history:[33800,32800,31800,30800,29800,28900,28400,27900]},
+  {name:'크리넥스 3겹 데코&소프트 화장지 30롤', promo:'자주 사는 생필품 1위! 지금 특가', price:28900, orig:35900, link:'https://link.coupang.com/a/hy48GhQXiS', history:[35900,34900,33900,32900,31900,30900,29900,28900]},
+  {name:'다우니 세탁세제 1.9L (딥클린 프레시)', promo:'대용량이라 오래 써요', price:18900, orig:24900, link:'https://link.coupang.com/a/hy5bTRXN6r', history:[24900,23900,22900,21900,20900,19900,19400,18900]},
+  {name:'탐사 물티슈 100매 x 20팩', promo:'육아맘 필수템, 쟁여두기 좋아요', price:15900, orig:21900, link:'https://link.coupang.com/a/hy5dyJr22S', history:[21900,20900,19900,18900,17900,16900,16400,15900]},
+  {name:'TS 뉴프리미엄 샴푸+트리트먼트 세트', promo:'두피 걱정 끝! 실구매자 평점 높음', price:21900, orig:29000, link:'https://link.coupang.com/a/hy5eOMpeVM', history:[29000,27900,26900,25900,24900,23900,22900,21900]},
+  {name:'퐁퐁 주방세제 1.2L', promo:'주방 필수! 기름때 싹', price:12900, orig:16900, link:'https://link.coupang.com/a/hy5f2qXnQO', history:[16900,16400,15900,15400,14900,14400,13900,12900]},
+  {name:'햇반 백미 210g x 24개', promo:'바쁠 때 한 끼 해결!', price:27900, orig:33800, link:'https://link.coupang.com/a/hy5hmeibUy', history:[33800,32800,31800,30800,29800,28900,28400,27900]},
 ];
 
 function priceGraph(history, w=260, h=50){
