@@ -56,6 +56,20 @@ nav{display:flex;gap:8px}
 .detail-btn{background:#fff;border:1px solid var(--primary);color:var(--primary);padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700}
 .detail-btn:hover{background:var(--primary);color:#fff}
 .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
+/* 쿠팡파트너스 제휴 상품 카드 */
+.aff-card{background:linear-gradient(135deg,#fff8f0 0%,#fff 100%);border:1px solid #ffd8a8;border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.aff-card::before{content:"AD";position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;color:#fff;background:#ff6b35;padding:2px 8px;border-radius:999px}
+.aff-badge{font-size:11px;font-weight:700;color:#ff6b35;background:#fff0e0;padding:3px 10px;border-radius:999px;display:inline-block;width:fit-content}
+.aff-name{font-size:15px;font-weight:700;line-height:1.4}
+.aff-promo{font-size:12px;color:#e8590c}
+.aff-price-row{display:flex;align-items:baseline;gap:8px}
+.aff-price{font-size:20px;font-weight:800;color:#d9480f}
+.aff-orig{font-size:13px;color:var(--muted);text-decoration:line-through}
+.aff-discount{font-size:12px;font-weight:700;color:#fff;background:#e8590c;padding:2px 8px;border-radius:999px}
+.aff-graph{margin:4px 0}
+.aff-link{display:block;text-align:center;background:#ff6b35;color:#fff!important;font-weight:700;padding:10px;border-radius:12px;font-size:14px;margin-top:4px}
+.aff-link:hover{background:#e8590c}
+.aff-note{font-size:10px;color:var(--muted);text-align:center}
 .modal-back{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
 .modal-back.open{display:flex}
 .modal{background:#fff;border-radius:20px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;padding:28px;position:relative}
@@ -468,7 +482,7 @@ const BASE_JOBS = [{"id": "pnu-1511383", "univ": "부산대학교", "title": "[�
 {"id": "seoultech-894809", "univ": "서울과학기술대학교", "title": "2026년 제2차 교수초빙(교육공무원 일반공개·경력경쟁채용) 공고", "cat": "행정", "contract": "계약직", "pay": "원문 확인", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-09-02", "desc": "서울과학기술대학교 교무과 등록 공고입니다. 등록일 2026-09-02.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "교무과", "source": "https://www.seoultech.ac.kr/service/info/recruit/?do=commonview&searchtext=&searchtype=-1&nowpage=5&bnum=3601&bidx=894809&qidx=3601&cate=10&allboard=false&nowpage=5", "summary": "2026년 제2차 교수초빙(교육공무원 일반공개·경력경쟁채용) 공고 (붙임3) 2026년 제2차 교수초빙(교육공무원 경력경쟁채용등) 공고.pdf"},
 {"id": "catholic-273663", "univ": "가톨릭대학교", "title": "[대학일자리플러스센터] 취업진로컨설턴트 모집 안내", "cat": "취업지원", "contract": "계약직", "pay": "원문 확인", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-07-14", "desc": "가톨릭대학교 대학일자리플러스센터 등록 공고입니다. 등록일 2026-07-14.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "대학일자리플러스센터", "source": "https://www.catholic.ac.kr/ko/service/Job-posting.do?mode=view&articleNo=273663&article.offset=0&articleLimit=10", "phone": "02-2164-4950", "summary": "170th Anniversary Giving Campaign"},
 {"id": "anyang-40910", "univ": "안양대학교", "title": "2026학년도 2학기 겸임교원 채용 공고(3차)", "cat": "행정", "contract": "원문 확인", "pay": "원문 확인", "location": "경기", "headcount": "-", "deadline": "원문 확인", "posted": "2026-08-14", "desc": "안양대학교 교무연구지원과 등록 공고입니다. 등록일 2026-08-14.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "교무연구지원과", "source": "https://www.anyang.ac.kr/main/communication/notice.do?mode=view&articleNo=40910&article.offset=0&articleLimit=15&srCategoryId=21"},
-{"id": "snu-176264", "univ": "서울대학교", "title": "서울대학교 기계공학부 BK21사업단 자체직원 채용공고", "cat": "행정", "contract": "계약직", "pay": "협의", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-09-28", "desc": "서울대학교 채용담당 등록 공고입니다. 등록일 2026-09-28.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "서울대학교", "source": "https://www.snu.ac.kr/snunow/notice/job-openings?md=v&bbsidx=176264", "phone": "02-880-7132", "summary": "1)행정업무 및 연구비 관리 / 1)학사학위 이상 소지자"},
+{"id": "snu-176264", "univ": "서울대학교", "title": "서울대학교 기계공학부 BK21사업단 자체직원 채용공고", "cat": "행정", "contract": "계약직", "pay": "협의", "location": "서울", "headcount": "-", "deadline": "2026-10-09", "posted": "2026-09-28", "desc": "서울대학교 채용담당 등록 공고입니다. 등록일 2026-09-28.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "서울대학교", "source": "https://www.snu.ac.kr/snunow/notice/job-openings?md=v&bbsidx=176264", "phone": "02-880-7132", "summary": "1)행정업무 및 연구비 관리 / 1)학사학위 이상 소지자"},
 {"id": "hufs-261076", "univ": "한국외국어대학교", "title": "(공고) 미네르바 헬스장 근로 장학생 모집 안내", "cat": "행정", "contract": "원문 확인", "pay": "원문 확인", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-08-10", "desc": "한국외국어대학교 총괄지원팀 등록 공고입니다. 등록일 2026-08-10. 첨부파일 있음. 마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "총괄지원팀", "source": "https://www.hufs.ac.kr/bbs/hufs/2183/261076/artclView.do", "phone": "02-2173-2168", "summary": "가. 모집 대상: 오바마홀 미네르바 헬스장 근로 장학생(교내 근로장학생) 다. 근무 시작일: 2026년 9월 1일(화)부터(2026학년도 2학기 시작부터, 최종합격자에게 별도 공지)"},
 {"id": "seoultech-895353", "univ": "서울과학기술대학교", "title": "서울과학기술대학교 대외협력처 초빙교수 공개경쟁채용 공고", "cat": "행정", "contract": "계약직", "pay": "원문 확인", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-09-10", "desc": "서울과학기술대학교 대외협력처 등록 공고입니다. 등록일 2026-09-10.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "대외협력처", "source": "https://www.seoultech.ac.kr/service/info/recruit/?do=commonview&searchtext=&searchtype=-1&nowpage=3&bnum=3601&bidx=895353&qidx=3601&cate=10&allboard=false&nowpage=3", "summary": "서울과학기술대학교 - 정보·민원서비스 - 대학정보알림 - 채용정보 대학정보알림정보공개정보서비스안내온라인민원센터청렴행정갑질신고센터유실물 센터SEOULTECH광장"},
 {"id": "sejong-893987", "univ": "세종대학교", "title": "세종대학교 일반사무 계약직 모집공고 (학사지원과)", "cat": "행정", "contract": "원문 확인", "pay": "원문 확인", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-09-29", "desc": "세종대학교 등록 공고입니다. 등록일 2026-09-29.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "세종대학교", "source": "https://www.sejong.ac.kr/kor/intro/notice8.do?mode=view&articleNo=893987", "phone": "02-3408-3038"},
@@ -579,7 +593,6 @@ const BASE_JOBS = [{"id": "pnu-1511383", "univ": "부산대학교", "title": "[�
 {"id": "dongduk-91377", "univ": "동덕여자대학교", "title": "동덕여자대학교 사회봉사센터 연구원 채용", "cat": "연구", "contract": "계약직", "pay": "원문 확인", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "연구지원실관리자", "desc": "동덕여자대학교 사회봉사센터 연구원 채용", "contact": "연구지원실관리자", "source": "https://www.dongduk.ac.kr/www/contents/kor-jobs.do?schM=view&page=2&viewCount=10&id=91377&schBdcode=&schGroupCode=&etc1=260", "summary": "동덕여자대학교에서는 대학혁신지원사업(프로젝트) 등을 수행하기 위하여 관련 업무를 담당할 연구원을 모집하오니 관심 있는 분들의 많은 지원을 바랍니다. - 최초 계약기간 만료 후 근무성적 및 대학혁신지원사업 여건 등에 따라 1년 재계약 가능"},
 {"id": "uos-5924", "univ": "서울시립대학교", "title": "[창업지원단] 국가근로장학생 추가모집(8.28.오늘17시까지)", "cat": "행정", "contract": "계약직", "pay": "원문 확인", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-08-28", "desc": "서울시립대학교 창업지원단 등록 공고입니다. 등록일 2026-08-28.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "창업지원단", "source": "https://www.uos.ac.kr/korNotice/view.do?list_id=FA34&seq=5924&sort=1&pageIndex=4&searchCnd=&searchWrd=&cate_id=&viewAuth=Y&writeAuth=Y&board_list_num=10&lpageCount=12&menuid=2000005009004000000&identified=anonymous&", "phone": "02-6490-6114", "summary": "상세내용 < 직원채용 < UOS공지 < 캠퍼스생활 < 서울시립대학교 [창업지원단] 국가근로장학생 추가모집(8.28.오늘17시까지)"},
 {"id": "dongduk-89661", "univ": "동덕여자대학교", "title": "2025학년도 1학기 실용음악전공 강사 채용 공고", "cat": "행정", "contract": "계약직", "pay": "원문 확인", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "연구지원실관리자", "desc": "2025학년도 1학기 실용음악전공 강사 채용 공고", "contact": "연구지원실관리자", "source": "https://www.dongduk.ac.kr/www/contents/kor-jobs.do?schM=view&page=4&viewCount=10&id=89661&schBdcode=&schGroupCode=&etc1=241", "phone": "02-940-4043", "summary": "중 한 개를 선택하여 작성하며, 분야별 복수지원은 불가함 / 가. 「대학교원 자격기준 등에 관한 규정」 제2조에 따라 다음 각 호의 어느 하나에 해당하는 자"},
-{"id": "hanyang-112502", "univ": "한양대학교", "title": "[반도체특성화대학원] 한양대학교 반도체특성화대학원사업단 연구비 담당 채용 공고", "cat": "행정", "contract": "계약직", "pay": "연봉 약 3,600만원", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-07-15", "desc": "한양대학교 미래인재양성팀 등록 공고입니다. 등록일 2026-07-15.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "미래인재양성팀", "source": "https://www.hanyang.ac.kr/notice_all?p_p_id=kr_ac_hanyang_noticeBoard_web_portlet_NoticeBoardPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_kr_ac_hanyang_noticeBoard_web_portlet_NoticeBoardPortlet_action=view_message&_kr_ac_hanyang_noticeBoard_web_portlet_NoticeBoardPortlet_sCategoryId=224311302&_kr_ac_hanyang_noticeBoard_web_portlet_NoticeBoardPortlet_entryId=112502", "phone": "02-2220-0350", "summary": "• 특성화대학원사업 연구비 관리, 집행 및 정산 (주 업무) / • 경력 무관 (신입도 지원 가능)"},
 {"id": "yonsei-943855", "univ": "연세대학교", "title": "연세대학교 공과대학 배터리공학과 행정직원 채용 공고", "cat": "행정", "contract": "계약직", "pay": "연봉 약 3,200만원", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-08-11", "desc": "연세대학교 배터리공학과 등록 공고입니다. 등록일 2026-08-11.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "배터리공학과", "source": "https://www.yonsei.ac.kr/bbs/sc/68/943855/artclView.do", "summary": "나. 계약기간: 채용일로부터 ~27.02.28 [이후 학과 과제가 연장될 경우, 평가를 거쳐 재계약 가능] 가. 이력서 및 자기소개서, 개인정보 수집 이용 동의서 (학과 양식)"},
 {"id": "hansung-225073", "univ": "한성대학교", "title": "[채용] 컴퓨터공학부 실습조교 채용 공고(재공지)", "cat": "행정", "contract": "조교", "pay": "협의", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "2026-09-29", "desc": "한성대학교 컴퓨터공학부 등록 공고입니다. 등록일 2026-09-29.\n마감일·급여·계약기간 등 상세 조건은 원문에서 확인하세요.", "contact": "컴퓨터공학부", "source": "https://www.hansung.ac.kr/bbs/hansung/2127/225073/artclView.do", "phone": "02-760-5772", "summary": "실습조교(주간) 1명. / 가. 학사학위 이상 소지자(전공 무관)"},
 {"id": "dongduk-91259", "univ": "동덕여자대학교", "title": "동덕여자대학교 인권센터 연구원 채용", "cat": "연구", "contract": "계약직", "pay": "원문 확인", "location": "서울", "headcount": "-", "deadline": "원문 확인", "posted": "연구지원실관리자", "desc": "동덕여자대학교 인권센터 연구원 채용", "contact": "연구지원실관리자", "source": "https://www.dongduk.ac.kr/www/contents/kor-jobs.do?schM=view&page=3&viewCount=10&id=91259&schBdcode=&schGroupCode=&etc1=256", "summary": "동덕여자대학교에서는 대학혁신지원사업(프로젝트) 등을 수행하기 위하여 관련 업무를 담당할 연구원을 모집하오니 관심 있는 분들의 많은 지원을 바랍니다. - 최초 계약기간 만료 후 근무성적 및 대학혁신지원사업 여건 등에 따라 1년 재계약 가능"},
@@ -633,6 +646,51 @@ function allJobs(){
 function getJob(id){ return allJobs().find(j=>String(j.id)===String(id)); }
 function esc(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+/* 쿠팡파트너스 제휴 상품 (생필품 위주)
+   ※ link를 본인의 쿠팡파트너스 링크로 교체하세요 */
+const AFFILIATE_PRODUCTS = [
+  {name:'크리넥스 3겹 데코&소프트 화장지 30롤', promo:'자주 사는 생필품 1위! 지금 특가', price:28900, orig:35900, link:'#', history:[35900,34900,33900,32900,31900,30900,29900,28900]},
+  {name:'다우니 세탁세제 3L (엑스퍼트)', promo:'대용량이라 오래 써요', price:18900, orig:24900, link:'#', history:[24900,23900,22900,21900,20900,19900,19400,18900]},
+  {name:'탐사 물티슈 100매 x 10팩', promo:'육아맘 필수템, 쟁여두기 좋아요', price:15900, orig:21900, link:'#', history:[21900,20900,19900,18900,17900,16900,16400,15900]},
+  {name:'TS 뉴프리미엄 샴푸 500ml', promo:'두피 걱정 끝! 실구매자 평점 높음', price:21900, orig:29000, link:'#', history:[29000,27900,26900,25900,24900,23900,22900,21900]},
+  {name:'퐁퐁 주방세제 1.2L x 2개', promo:'주방 필수! 기름때 싹', price:12900, orig:16900, link:'#', history:[16900,16400,15900,15400,14900,14400,13900,12900]},
+  {name:'햇반 백미 210g x 24개', promo:'바쁠 때 한 끼 해결!', price:27900, orig:33800, link:'#', history:[33800,32800,31800,30800,29800,28900,28400,27900]},
+];
+
+function priceGraph(history, w=260, h=50){
+  const min = Math.min(...history), max = Math.max(...history);
+  const range = max - min || 1;
+  const pts = history.map((v,i)=>{
+    const x = (i/(history.length-1))*w;
+    const y = h - ((v-min)/range)*(h-8) - 4;
+    return x.toFixed(1)+','+y.toFixed(1);
+  }).join(' ');
+  const lastX = w, lastY = h - ((history[history.length-1]-min)/range)*(h-8) - 4;
+  return `<svg class="aff-graph" width="100%" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">
+    <polyline points="${pts}" fill="none" stroke="#e8590c" stroke-width="2"/>
+    <circle cx="${lastX-2}" cy="${lastY}" r="3.5" fill="#e8590c"/>
+  </svg><div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted)">
+    <span>30일 전 ${min.toLocaleString()}원</span><span>현재 <b style="color:#d9480f">${history[history.length-1].toLocaleString()}원</b></span>
+  </div>`;
+}
+
+function affCard(p){
+  const disc = Math.round((1 - p.price/p.orig)*100);
+  return `<div class="aff-card">
+    <span class="aff-badge">생필품 특가</span>
+    <div class="aff-name">${esc(p.name)}</div>
+    <div class="aff-promo">${esc(p.promo)}</div>
+    <div>${priceGraph(p.history)}</div>
+    <div class="aff-price-row">
+      <span class="aff-discount">${disc}%</span>
+      <span class="aff-price">${p.price.toLocaleString()}원</span>
+      <span class="aff-orig">${p.orig.toLocaleString()}원</span>
+    </div>
+    <a class="aff-link" href="${esc(p.link)}" target="_blank" rel="noopener sponsored">쿠팡에서 보기 →</a>
+    <div class="aff-note">쿠팡파트너스 활동으로 수수료를 받을 수 있습니다</div>
+  </div>`;
+}
+
 function showView(v){
   document.getElementById('list-view').style.display = v==='list'?'block':'none';
   document.getElementById('post-view').style.display = v==='post'?'block':'none';
@@ -683,7 +741,7 @@ function renderJobs(jobs){
       : '조건에 맞는 공고가 없어요.<br>검색어를 바꿔보세요.') + '</div>';
     return;
   }
-  grid.innerHTML = jobs.map(j=>{
+  grid.innerHTML = jobs.map((j, idx)=>{
     const bm = bookmarks.includes(String(j.id)) ? 'on' : '';
     const tags = (j.tags||[]).map(t=>'<span class="badge">'+t+'</span>').join('');
     const d = daysLeft(j.deadline);
@@ -692,6 +750,12 @@ function renderJobs(jobs){
     const prem = j.plan==='프리미엄' ? ' premium' : '';
     const srcLink = (j.source && j.source!=='#')
       ? `<a href="${esc(j.source)}" target="_blank" rel="noopener" style="font-size:12px;color:var(--primary);font-weight:700">원문보기 →</a>` : '';
+    // 8개마다 제휴 상품 카드 삽입
+    let affHtml = '';
+    if((idx+1) % 8 === 0){
+      const affIdx = Math.floor((idx+1)/8 - 1) % AFFILIATE_PRODUCTS.length;
+      affHtml = affCard(AFFILIATE_PRODUCTS[affIdx]);
+    }
     return `<div class="job-card${prem}">
       <div class="job-top">
         <div><div class="job-company">${esc(j.univ)}</div>
@@ -708,7 +772,7 @@ function renderJobs(jobs){
         <span class="${dlCls}">${dlTxt}${isNaN(d)?'':' · ~ '+esc(j.deadline)}</span>
         <span style="display:flex;gap:8px;align-items:center">${srcLink}<button class="detail-btn" onclick="openModal('${j.id}')">상세보기</button></span>
       </div>
-    </div>`;
+    </div>` + affHtml;
   }).join('');
 }
 
